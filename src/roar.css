@@ -1,0 +1,98 @@
+.roar-alert-mask {
+    position: fixed;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.roar-alert-message-body {
+    position: fixed;
+    z-index: 9999;
+    min-width: 640px;
+    max-width: 720px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #fafafc;
+    text-align: center;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 48px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 48px rgba(0, 0, 0, 0.15);
+    -webkit-animation: roar-show 0.1s;
+    animation: roar-show 0.1s;
+}
+@media screen and (max-width: 480px) {
+    .roar-alert-message-body {
+        min-width: 320px;
+        max-width: 100%;
+    }
+}
+.roar-alert-message-tbf {
+    padding: 0 20px;
+    font-size: 15px;
+    color: #888888;
+}
+.roar-alert-message-title {
+    font-weight: 400;
+    font-size: 18px;
+    padding: 8px 24px;
+}
+.roar-alert-message-content {
+    padding: 24px 24px;
+    text-align: left;
+}
+.roar-alert-message-button {
+    position: relative;
+    line-height: 42px;
+    margin-top: 20px;
+    font-size: 17px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.roar-alert-message-button a {
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    color: #3cc51f;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a.roar-alert-message-button-cancel {
+    color: #353535;
+}
+
+@-webkit-keyframes roar-show {
+    0% {
+        -webkit-filter: opacity(.2);
+        filter: opacity(.2);
+        margin-top: -16px;
+    }
+    100% {
+        -webkit-filter: opacity(1);
+        filter: opacity(1);
+        margin-top: 0;
+    }
+}
+@keyframes roar-show {
+    0% {
+        -webkit-filter: opacity(.2);
+        filter: opacity(.2);
+        margin-top: -16px;
+    }
+    100% {
+        -webkit-filter: opacity(1);
+        filter: opacity(1);
+        margin-top: 0;
+    }
+}
+
+.roar-open {
+    overflow: hidden;
+}
