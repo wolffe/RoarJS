@@ -7,6 +7,6 @@ https://getbutterfly.com/roar-vanilla-javascript-alert-confirm-replacement/
 
 ```
 <script>
-roar('this is title', 'show message');
+roar('this is the title', 'show message');
 </script>
 ```
