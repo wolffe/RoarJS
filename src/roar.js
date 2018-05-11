@@ -5,7 +5,7 @@
 /* global console */
 
 /*
- * roar - v1.0.4 - 2018-05-09
+ * roar - v1.0.4 - 2018-05-11
  * https://getbutterfly.com/roar/
  * Copyright (c) 2018 Ciprian Popescu
  * Licensed GPLv3
