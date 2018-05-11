@@ -86,9 +86,9 @@ function roar(title, message, options) {
 
     if (!RoarObject.element) {
         RoarObject.html =
-            '<div class="roar-alert" id="roar-alert">' +
+            '<div class="roar-alert" id="roar-alert" role="alertdialog">' +
             '<div class="roar-alert-mask"></div>' +
-            '<div class="roar-alert-message-body">' +
+            '<div class="roar-alert-message-body" role="alert" aria-relevant="all">' +
             '<div class="roar-alert-message-tbf roar-alert-message-title">' +
             RoarObject.title +
             '</div>' +
