@@ -5,7 +5,7 @@
 /* global console */
 
 /*
- * roar - v1.0.3 - 2018-05-09
+ * roar - v1.0.4 - 2018-05-09
  * https://getbutterfly.com/roar/
  * Copyright (c) 2018 Ciprian Popescu
  * Licensed GPLv3
@@ -53,6 +53,22 @@ function roar(title, message, options) {
 
         // console.log("cancel");
     };
+
+    // Close alert on click outside
+    if (document.querySelector('.roar-alert-mask')) {
+        document.querySelector('.roar-alert-mask').addEventListener('click', function (event) {
+            document.body.classList.remove('roar-open');
+            window.roarAlert.element.style.display = 'none';
+            // Cancel callback
+            if (typeof options.cancelCallBack === 'function') {
+                options.cancelCallBack(event);
+            }
+            return true;
+
+            // console.log("clicked outside");
+        });
+    }
+
     RoarObject.message = message;
     RoarObject.title = title;
     RoarObject.confirm = options.confirm !== undefined ? options.confirm : true;
