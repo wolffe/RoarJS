@@ -1,3 +1,9 @@
+/*
+ * roar - v1.0.4 - 2018-05-11
+ * https://getbutterfly.com/roar/
+ * Copyright (c) 2018 Ciprian Popescu
+ * Licensed GPLv3
+ */
 .roar-alert-mask {
     position: fixed;
     z-index: 9998;
@@ -44,7 +50,7 @@
 }
 .roar-alert-message-content {
     padding: 24px 24px;
-    text-align: left;
+    text-align: center;
 }
 .roar-alert-message-button {
     position: relative;
