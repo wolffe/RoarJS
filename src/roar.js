@@ -5,8 +5,8 @@
 /* global console */
 
 /*
- * roar - v1.0.4 - 2018-05-11
- * https://getbutterfly.com/roar/
+ * roar - v1.0.5 - 2018-05-25
+ * https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
  * Copyright (c) 2018 Ciprian Popescu
  * Licensed GPLv3
  */
@@ -49,9 +49,9 @@ function roar(title, message, options) {
         if (typeof options.cancelCallBack === 'function') {
             options.cancelCallBack(event);
         }
-        return true;
 
-        // console.log("cancel");
+        // Cancelled
+        return true;
     };
 
     // Close alert on click outside
@@ -63,9 +63,9 @@ function roar(title, message, options) {
             if (typeof options.cancelCallBack === 'function') {
                 options.cancelCallBack(event);
             }
-            return true;
 
-            // console.log("clicked outside");
+            // Clicked outside
+            return true;
         });
     }
 
@@ -80,8 +80,9 @@ function roar(title, message, options) {
         if (typeof options.confirmCallBack === 'function') {
             options.confirmCallBack(event);
         }
+
+        // Confirmed
         return true;
-        // console.log("confirm");
     };
 
     if (!RoarObject.element) {
