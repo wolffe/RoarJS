@@ -23,6 +23,7 @@ function roar(title, message, options) {
             cancelElement: null,
             confirmElement: null
         };
+
         RoarObject.element = document.querySelector('.roar-alert');
     } else {
         // Clear style
@@ -53,21 +54,6 @@ function roar(title, message, options) {
         // Cancelled
         return true;
     };
-
-    // Close alert on click outside
-    if (document.querySelector('.roar-alert-mask')) {
-        document.querySelector('.roar-alert-mask').addEventListener('click', function (event) {
-            document.body.classList.remove('roar-open');
-            window.roarAlert.element.style.display = 'none';
-            // Cancel callback
-            if (typeof options.cancelCallBack === 'function') {
-                options.cancelCallBack(event);
-            }
-
-            // Clicked outside
-            return true;
-        });
-    }
 
     RoarObject.message = message;
     RoarObject.title = title;
@@ -113,7 +99,23 @@ function roar(title, message, options) {
         element.innerHTML = RoarObject.html;
         document.body.appendChild(element);
 
+        // Close alert on click outside
+        if (document.querySelector('.roar-alert-mask')) {
+            document.querySelector('.roar-alert-mask').addEventListener('click', function (event) {
+                document.body.classList.remove('roar-open');
+                window.roarAlert.element.style.display = 'none';
+                // Cancel callback
+                if (typeof options.cancelCallBack === 'function') {
+                    options.cancelCallBack(event);
+                }
+
+                // Clicked outside
+                return true;
+            });
+        }
+
         RoarObject.element = document.querySelector('.roar-alert');
+
         RoarObject.cancelElement = document.querySelector('.roar-alert-message-button-cancel');
 
         // Enabled cancel button callback
@@ -123,7 +125,7 @@ function roar(title, message, options) {
             document.querySelector('.roar-alert-message-button-cancel').style.display = 'none';
         }
 
-        // Enabled cancel button callback
+        // Enabled confirm button callback
         RoarObject.confirmElement = document.querySelector('.roar-alert-message-button-confirm');
         if (RoarObject.confirm) {
             document.querySelector('.roar-alert-message-button-confirm').style.display = 'block';
@@ -139,6 +141,7 @@ function roar(title, message, options) {
 
     document.querySelector('.roar-alert-message-title').innerHTML = '';
     document.querySelector('.roar-alert-message-content').innerHTML = '';
+
     document.querySelector('.roar-alert-message-button-cancel').innerHTML = RoarObject.cancelText;
     document.querySelector('.roar-alert-message-button-confirm').innerHTML = RoarObject.confirmText;
 
@@ -151,13 +154,15 @@ function roar(title, message, options) {
         document.querySelector('.roar-alert-message-button-cancel').style.display = 'none';
     }
 
-    // Enabled cancel button callback
     RoarObject.confirmElement = document.querySelector('.roar-alert-message-button-confirm');
+
+    // Enabled confirm button callback
     if (RoarObject.confirm) {
         document.querySelector('.roar-alert-message-button-confirm').style.display = 'block';
     } else {
         document.querySelector('.roar-alert-message-button-confirm').style.display = 'none';
     }
+
     RoarObject.cancelElement.onclick = RoarObject.cancelCallBack;
     RoarObject.confirmElement.onclick = RoarObject.confirmCallBack;
 
