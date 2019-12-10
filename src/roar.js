@@ -13,9 +13,15 @@
 function roar(title, message, options) {
     'use strict';
 
-    if (typeof options !== 'object') {
-        options = {};
+    // supported animations
+    const animations = {
+        roarShow: 'roarShow',
+        bounceIn: 'bounceIn'
     }
+
+    if (typeof options !== 'object') options = {}
+
+    if (typeof options.animation !== 'string') options.animation = ''
 
     if (!window.roarAlert) {
         var RoarObject = {
@@ -41,6 +47,7 @@ function roar(title, message, options) {
     }
 
     // Define default options
+    RoarObject.animation = animations.hasOwnProperty(options.animation) ? options.animation : animations.roarShow
     RoarObject.cancel = options.cancel !== undefined ? options.cancel : false;
     RoarObject.cancelText = options.cancelText !== undefined ? options.cancelText : 'Cancel';
     RoarObject.cancelCallBack = function (event) {
@@ -101,17 +108,7 @@ function roar(title, message, options) {
 
         // Close alert on click outside
         if (document.querySelector('.roar-alert-mask')) {
-            document.querySelector('.roar-alert-mask').addEventListener('click', function (event) {
-                document.body.classList.remove('roar-open');
-                window.roarAlert.element.style.display = 'none';
-                // Cancel callback
-                if (typeof options.cancelCallBack === 'function') {
-                    options.cancelCallBack(event);
-                }
-
-                // Clicked outside
-                return true;
-            });
+            document.querySelector('.roar-alert-mask').addEventListener('click', onClickOutsideAlertHandler);
         }
 
         RoarObject.element = document.querySelector('.roar-alert');
@@ -173,5 +170,35 @@ function roar(title, message, options) {
     document.querySelector('.roar-alert-message-title').innerHTML = RoarObject.title;
     document.querySelector('.roar-alert-message-content').innerHTML = RoarObject.message;
 
+    // Prevent closing roar alert when animating
+    document.querySelector('.roar-alert-message-body').onanimationstart = (event) => {
+        document.querySelector('.roar-alert-mask').removeEventListener('click', onClickOutsideAlertHandler)
+    }
+
+    // Allow roar alert to close after it finished animating
+    document.querySelector('.roar-alert-message-body').onanimationend = (event) => {
+        document.querySelector('.roar-alert-mask').addEventListener('click', onClickOutsideAlertHandler)
+    }
+
+    // Set animation
+    document.querySelector('.roar-alert-message-body').style.animation = RoarObject.animation + ' 0.3s';
+    document.querySelector('.roar-alert-message-body').style.webkitAnimation = RoarObject.animation + ' 0.3s'
+
     window.roarAlert = RoarObject;
+
+    // Callback function when clicking outside roar alert
+    function onClickOutsideAlertHandler(event) {
+        // Do NOT close next animated roar alert
+        document.querySelector('.roar-alert-mask').removeEventListener('click', onClickOutsideAlertHandler)
+
+        document.body.classList.remove('roar-open');
+        window.roarAlert.element.style.display = 'none';
+        // Cancel callback
+        if (typeof options.cancelCallBack === 'function') {
+            options.cancelCallBack(event);
+        }
+
+        // Clicked outside
+        return true;
+    }
 }
