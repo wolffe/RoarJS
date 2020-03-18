@@ -1,9 +1,15 @@
 /*
- * roar - v1.0.5 - 2018-05-25
+ * roar - v1.0.6 - 2020-03-18
  * https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
- * Copyright (c) 2018 Ciprian Popescu
+ * Copyright (c) 2018-2020 Ciprian Popescu
  * Licensed GPLv3
  */
+#roar-alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .roar-alert-mask {
     position: fixed;
     z-index: 9998;
@@ -19,17 +25,9 @@
     z-index: 9999;
     min-width: 640px;
     max-width: 720px;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    top: 32px;
     background-color: #fafafc;
-    text-align: center;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 48px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 48px rgba(0, 0, 0, 0.15);
-    -webkit-animation: roar-show 0.1s;
+    border-radius: 2px;
     animation: roar-show 0.1s;
 }
 @media screen and (max-width: 480px) {
@@ -55,8 +53,6 @@
     position: relative;
     padding: 24px;
     font-size: 18px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,26 +87,12 @@ a.roar-alert-message-button-confirm:hover {
     text-decoration: none;
 }
 
-@-webkit-keyframes roar-show {
-    0% {
-        -webkit-filter: opacity(.2);
-        filter: opacity(.2);
-        margin-top: -16px;
-    }
-    100% {
-        -webkit-filter: opacity(1);
-        filter: opacity(1);
-        margin-top: 0;
-    }
-}
 @keyframes roar-show {
     0% {
-        -webkit-filter: opacity(.2);
         filter: opacity(.2);
         margin-top: -16px;
     }
     100% {
-        -webkit-filter: opacity(1);
         filter: opacity(1);
         margin-top: 0;
     }
