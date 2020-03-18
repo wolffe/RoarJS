@@ -1,13 +1,7 @@
-/* eslint-env browser */
-/* jslint-env browser */
-/* global window */
-/* global document */
-/* global console */
-
 /*
- * roar - v1.0.5 - 2018-05-25
+ * roar - v1.0.6 - 2020-03-18
  * https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
- * Copyright (c) 2018 Ciprian Popescu
+ * Copyright (c) 2018-2020 Ciprian Popescu
  * Licensed GPLv3
  */
 function roar(title, message, options) {
@@ -34,7 +28,7 @@ function roar(title, message, options) {
         }
         // Show alert
         document.body.classList.add('roar-open');
-        window.roarAlert.element.style.display = 'block';
+        window.roarAlert.element.style.display = 'flex';
 
         RoarObject = window.roarAlert;
     }
