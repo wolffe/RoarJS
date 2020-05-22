@@ -1,18 +1,16 @@
 /*
- * roar - v1.0.6 - 2020-03-18
+ * roar - v1.0.7 - 2020-05-22
  * https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
  * Copyright (c) 2018-2020 Ciprian Popescu
  * Licensed GPLv3
  */
 function roar(title, message, options) {
-    'use strict';
-
     if (typeof options !== 'object') {
         options = {};
     }
 
     if (!window.roarAlert) {
-        var RoarObject = {
+        let RoarObject = {
             element: null,
             cancelElement: null,
             confirmElement: null
@@ -102,7 +100,8 @@ function roar(title, message, options) {
 
         RoarObject.html += '</div></div></div>';
 
-        var element = document.createElement('div');
+        let element = document.createElement('div');
+
         element.id = 'roar-alert-wrap';
         element.innerHTML = RoarObject.html;
         document.body.appendChild(element);
