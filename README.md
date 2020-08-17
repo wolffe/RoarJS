@@ -1,7 +1,7 @@
 # RoarJS
 A zero-dependency, vanilla JavaScript alert/confirm replacement.
 
-Version: `1.0.7`
+Version: `1.1.0`
 
 https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
 

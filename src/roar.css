@@ -1,9 +1,3 @@
-/*
- * roar - v1.0.7 - 2020-05-22
- * https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
- * Copyright (c) 2018-2020 Ciprian Popescu
- * Licensed GPLv3
- */
 #roar-alert {
     display: flex;
     align-items: center;
@@ -26,6 +20,7 @@
     min-width: 640px;
     max-width: 720px;
     top: 16%;
+    padding: 16px;
     background-color: #fafafc;
     border-radius: 2px;
     animation: roar-show 0.1s;
@@ -35,10 +30,6 @@
         min-width: 320px;
         max-width: 100%;
     }
-}
-.roar-alert-message-tbf {
-    padding: 0 20px;
-    font-size: 16px;
 }
 .roar-alert-message-title {
     font-weight: 400;

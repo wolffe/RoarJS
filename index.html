@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Roar Alert</title>
+<title>RoarJS Alert</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="dist/roar.min.css">
 </head>
@@ -15,15 +15,15 @@
  * Custom demos
  */
 function demo3() {
-    var options = {
+    const options = {
         cancel: true,
         cancelText: "cancel",
-        cancelCallBack: function (event) {
+        cancelCallBack: (event) => {
             console.log("options.cancelCallBack");
         },
         confirm: true,
         confirmText: "confirm",
-        confirmCallBack: function (event) {
+        confirmCallBack: (event) => {
             console.log("options.confirmCallBack");
         }
     };
@@ -34,30 +34,30 @@ function demo3() {
     );
 }
 function demo4() {
-    var options = {
+    const options = {
         cancel: false,
         cancelText: "cancel",
-        cancelCallBack: function (event) {
+        cancelCallBack: (event) => {
             console.log("options.cancelCallBack");
         },
         confirm: true,
         confirmText: "confirm",
-        confirmCallBack: function (event) {
+        confirmCallBack: (event) => {
             console.log("options.confirmCallBack");
         }
     };
     roar("demo 4", "demo 4 show message", options);
 }
 function demo5() {
-    var options = {
+    const options = {
         cancel: true,
         cancelText: "cancel button",
-        cancelCallBack: function (event) {
+        cancelCallBack: (event) => {
             console.log("options.cancelCallBack");
         },
         confirm: true,
         confirmText: "confirm button",
-        confirmCallBack: function (event) {
+        confirmCallBack: (event) => {
             console.log("options.confirmCallBack");
         }
     };

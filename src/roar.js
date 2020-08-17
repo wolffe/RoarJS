@@ -1,8 +1,15 @@
-/*
- * roar - v1.0.7 - 2020-05-22
- * https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
- * Copyright (c) 2018-2020 Ciprian Popescu
- * Licensed GPLv3
+/**
+ * RoarJS
+ *
+ * A zero-dependency, vanilla JavaScript alert/confirm replacement.
+ *
+ * @url https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
+ * @version 1.1.0
+ *
+ * @author Ciprian Popescu
+ * @copyright 2018-2020
+ * @license GPLv3 or later
+ * @licenseUri https://www.gnu.org/licenses/gpl-3.0.html
  */
 function roar(title, message, options) {
     if (typeof options !== 'object') {
@@ -10,11 +17,12 @@ function roar(title, message, options) {
     }
 
     if (!window.roarAlert) {
-        let RoarObject = {
+        var RoarObject = {
             element: null,
             cancelElement: null,
             confirmElement: null
         };
+
         RoarObject.element = document.querySelector('.roar-alert');
     } else {
         // Clear style
@@ -34,9 +42,10 @@ function roar(title, message, options) {
     // Define default options
     RoarObject.cancel = options.cancel !== undefined ? options.cancel : false;
     RoarObject.cancelText = options.cancelText !== undefined ? options.cancelText : 'Cancel';
-    RoarObject.cancelCallBack = function (event) {
+    RoarObject.cancelCallBack = (event) => {
         document.body.classList.remove('roar-open');
         window.roarAlert.element.style.display = 'none';
+
         // Cancel callback
         if (typeof options.cancelCallBack === 'function') {
             options.cancelCallBack(event);
@@ -46,28 +55,14 @@ function roar(title, message, options) {
         return true;
     };
 
-    // Close alert on click outside
-    if (document.querySelector('.roar-alert-mask')) {
-        document.querySelector('.roar-alert-mask').addEventListener('click', function (event) {
-            document.body.classList.remove('roar-open');
-            window.roarAlert.element.style.display = 'none';
-            // Cancel callback
-            if (typeof options.cancelCallBack === 'function') {
-                options.cancelCallBack(event);
-            }
-
-            // Clicked outside
-            return true;
-        });
-    }
-
     RoarObject.message = message;
     RoarObject.title = title;
     RoarObject.confirm = options.confirm !== undefined ? options.confirm : true;
     RoarObject.confirmText = options.confirmText !== undefined ? options.confirmText : 'Confirm';
-    RoarObject.confirmCallBack = function (event) {
+    RoarObject.confirmCallBack = (event) => {
         document.body.classList.remove('roar-open');
         window.roarAlert.element.style.display = 'none';
+
         // Confirm callback
         if (typeof options.confirmCallBack === 'function') {
             options.confirmCallBack(event);
@@ -78,27 +73,24 @@ function roar(title, message, options) {
     };
 
     if (!RoarObject.element) {
-        RoarObject.html =
-            '<div class="roar-alert" id="roar-alert" role="alertdialog">' +
-            '<div class="roar-alert-mask"></div>' +
-            '<div class="roar-alert-message-body" role="alert" aria-relevant="all">' +
-            '<div class="roar-alert-message-tbf roar-alert-message-title">' +
-            RoarObject.title +
-            '</div>' +
-            '<div class="roar-alert-message-tbf roar-alert-message-content">' +
-            RoarObject.message +
-            '</div>' +
-            '<div class="roar-alert-message-tbf roar-alert-message-button">';
+        RoarObject.html = `<div class="roar-alert" id="roar-alert" role="alertdialog">
+            <div class="roar-alert-mask"></div>
+            <div class="roar-alert-message-body" role="alert" aria-relevant="all">
+                <div class="roar-alert-message-title">` + RoarObject.title + `</div>
+                <div class="roar-alert-message-content">` + RoarObject.message + `</div>
+                <div class="roar-alert-message-button">`;
 
-        if (RoarObject.cancel || true) {
-            RoarObject.html += '<a href="javascript:;" class="roar-alert-message-tbf roar-alert-message-button-cancel">' + RoarObject.cancelText + '</a>';
-        }
+                    if (RoarObject.cancel || true) {
+                        RoarObject.html += '<a href="javascript:;" class="roar-alert-message-button-cancel">' + RoarObject.cancelText + '</a>';
+                    }
 
-        if (RoarObject.confirm || true) {
-            RoarObject.html += '<a href="javascript:;" class="roar-alert-message-tbf roar-alert-message-button-confirm">' + RoarObject.confirmText + '</a>';
-        }
+                    if (RoarObject.confirm || true) {
+                        RoarObject.html += '<a href="javascript:;" class="roar-alert-message-button-confirm">' + RoarObject.confirmText + '</a>';
+                    }
 
-        RoarObject.html += '</div></div></div>';
+                RoarObject.html += `</div>
+            </div>
+        </div>`;
 
         let element = document.createElement('div');
 
@@ -109,15 +101,16 @@ function roar(title, message, options) {
         RoarObject.element = document.querySelector('.roar-alert');
         RoarObject.cancelElement = document.querySelector('.roar-alert-message-button-cancel');
 
-        // Enabled cancel button callback
+        // Enable cancel button callback
         if (RoarObject.cancel) {
             document.querySelector('.roar-alert-message-button-cancel').style.display = 'block';
         } else {
             document.querySelector('.roar-alert-message-button-cancel').style.display = 'none';
         }
 
-        // Enabled cancel button callback
+        // Enable confirm button callback
         RoarObject.confirmElement = document.querySelector('.roar-alert-message-button-confirm');
+
         if (RoarObject.confirm) {
             document.querySelector('.roar-alert-message-button-confirm').style.display = 'block';
         } else {
@@ -137,14 +130,14 @@ function roar(title, message, options) {
 
     RoarObject.cancelElement = document.querySelector('.roar-alert-message-button-cancel');
 
-    // Enabled cancel button callback
+    // Enable cancel button callback
     if (RoarObject.cancel) {
         document.querySelector('.roar-alert-message-button-cancel').style.display = 'block';
     } else {
         document.querySelector('.roar-alert-message-button-cancel').style.display = 'none';
     }
 
-    // Enabled cancel button callback
+    // Enable cancel button callback
     RoarObject.confirmElement = document.querySelector('.roar-alert-message-button-confirm');
     if (RoarObject.confirm) {
         document.querySelector('.roar-alert-message-button-confirm').style.display = 'block';
