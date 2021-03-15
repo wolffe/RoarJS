@@ -8,13 +8,17 @@
 </head>
 <body>
 
+<button onclick="demo1()">Demo 1</button>
+<button onclick="demo2()">Demo 2</button>
+<button onclick="demo3()">Demo 3</button>
+
 <script src="dist/roar.min.js"></script>
 
 <script>
 /*
  * Custom demos
  */
-function demo3() {
+function demo1() {
     const options = {
         cancel: true,
         cancelText: "cancel",
@@ -28,12 +32,12 @@ function demo3() {
         }
     };
     roar(
-        "demo 3",
+        "demo 1",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a purus non turpis scelerisque molestie. Pellentesque id interdum nulla. Etiam nec ex porta, blandit felis eget, pulvinar turpis. Nam efficitur placerat nisl, ut tempor leo finibus eget. Praesent non dolor id purus scelerisque elementum ac eu enim. Cras euismod ipsum id mi malesuada, nec porttitor velit pulvinar. Proin hendrerit libero fringilla augue euismod, sit amet molestie dui dapibus. Mauris libero quam, bibendum et quam at, condimentum eleifend libero.",
         options
     );
 }
-function demo4() {
+function demo2() {
     const options = {
         cancel: false,
         cancelText: "cancel",
@@ -46,9 +50,9 @@ function demo4() {
             console.log("options.confirmCallBack");
         }
     };
-    roar("demo 4", "demo 4 show message", options);
+    roar("demo 2", "demo 2 show message", options);
 }
-function demo5() {
+function demo3() {
     const options = {
         cancel: true,
         cancelText: "cancel button",
@@ -61,7 +65,7 @@ function demo5() {
             console.log("options.confirmCallBack");
         }
     };
-    roar("demo 5", "demo 5 show message", options);
+    roar("demo 3", "demo 3 show message", options);
 }
 </script>
 </body>
