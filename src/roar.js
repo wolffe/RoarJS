@@ -4,10 +4,10 @@
  * A zero-dependency, vanilla JavaScript alert/confirm replacement.
  *
  * @url https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/
- * @version 1.1.0
+ * @version 1.1.1
  *
  * @author Ciprian Popescu
- * @copyright 2018-2020
+ * @copyright 2018-2021
  * @license GPLv3 or later
  * @licenseUri https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -80,12 +80,12 @@ function roar(title, message, options) {
                 <div class="roar-alert-message-content">` + RoarObject.message + `</div>
                 <div class="roar-alert-message-button">`;
 
-                    if (RoarObject.cancel || true) {
-                        RoarObject.html += '<a href="javascript:;" class="roar-alert-message-button-cancel">' + RoarObject.cancelText + '</a>';
-                    }
-
                     if (RoarObject.confirm || true) {
                         RoarObject.html += '<a href="javascript:;" class="roar-alert-message-button-confirm">' + RoarObject.confirmText + '</a>';
+                    }
+
+                    if (RoarObject.cancel || true) {
+                        RoarObject.html += '<a href="javascript:;" class="roar-alert-message-button-cancel">' + RoarObject.cancelText + '</a>';
                     }
 
                 RoarObject.html += `</div>

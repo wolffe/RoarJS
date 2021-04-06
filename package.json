@@ -1,0 +1,30 @@
+{
+    "name": "roar.js",
+    "version": "1.1.0",
+    "description": "A zero-dependency, vanilla JavaScript alert/confirm replacement.",
+    "keywords": [
+        "popup",
+        "modal",
+        "alert",
+        "confirm",
+        "roar",
+        "vanilla"
+    ],
+    "author": "wolffe <getbutterfly@gmail.com> (https://getbutterfly.com)",
+    "license": "GPLv3",
+    "homepage": "https://getbutterfly.com/roarjs-vanilla-javascript-alert-confirm-replacement/",
+
+    "main": "src/roar.js",
+    "bugs": {
+        "url": "https://github.com/wolffe/roarjs/issues",
+        "email": "getbutterfly@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/wolffe/roarjs.git"
+    },
+
+    "reveal": true,
+    "browser": "src/roar.js",
+    "jsdelivr": "src/roar.js"
+}
